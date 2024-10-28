@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tic Tac Toe
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']" class="home-button">
+        <ion-icon slot="start" name="home"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="board">
+  <div *ngFor="let cell of board; let i = index" (click)="makeMove(i)" class="cell">
+    {{ cell }}
+  </div>
+</div>
+<div class="status" [ngClass]="{'winner-message': winner}">
+  <p *ngIf="winner">Winner: <span class="winner">{{ winner }}</span></p>
+  <p class="draw" *ngIf="isDraw">It's a draw!</p>
+</div>
+
+<ion-button expand="full" class="reset-button" (click)="resetGame()">Reset Game</ion-button>
